@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
+import PrivateRoute from './PrivateRoute'
+import { Questions } from './Questions'
 import { ShowAvatar } from './ShowAvatar'
+import { ShowQuestion } from './ShowQuestion'
 const url = 'https://quiz-appmb.herokuapp.com/api/auth'
 
-export const RegisterAvatar = () => {
+export const RegisterAvatar = ({isAuth}) => {
 	const [avatar, setAvatar] = useState('')
 	const [isRegister, setIsRegister] = useState(false)
 
@@ -22,8 +25,9 @@ export const RegisterAvatar = () => {
 				},
 				body: JSON.stringify(data),
 			})
+
 			setIsRegister(true)
-			
+      isAuth(true)
 		} catch (error) {
 			console.log(error)
 			return alert('Ocurrio un error inesperado!')
@@ -33,7 +37,7 @@ export const RegisterAvatar = () => {
 	return (
 		<div className='col-lg-6 col-md-12  text-center'>
       {isRegister && <Navigate to='/questions'/>}
-			<h3 className='text-center'> Registrate y juega! </h3>
+			<h3 className='text-center'> Registrate tu avatar y juega! </h3>
 			<input
 				className='form-control'
 				type='text'

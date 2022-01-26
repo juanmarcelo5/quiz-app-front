@@ -6,22 +6,18 @@ export const Questions = ({ questions = [] }) => {
 	const [score, setScore] = useState(0)
 	const [finished, setFinished] = useState(false)
 
-	const getAnswer = (answer,e) => {
+	const getAnswer = (answer, e) => {
 		//verificamos primero la rapues
 		if (answer) {
 			setScore(score + 1)
-    
-				console.log('cambianndo');
-        e.target.className='btn btn-success mt-2'				
-				
-			} else {
-			e.target.className='btn btn-danger mt-2'				
-		
+			e.target.className = 'btn btn-success mt-2'
+		} else {
+			e.target.className = 'btn btn-danger mt-2'
 		}
-		setTimeout(()=>{
-
+		//se agrega el setTimeout para tener una transaccion mas lenta entre las preguntas
+		setTimeout(() => {
 			nextQuestion()
-		},2000)
+		}, 1000)
 	}
 
 	const nextQuestion = () => {
@@ -42,7 +38,7 @@ export const Questions = ({ questions = [] }) => {
 				return (
 					<button
 						className='btn btn-primary mt-2'
-						onClick={(e) => getAnswer(el.isCorrect,e)}
+						onClick={(e) => getAnswer(el.isCorrect, e)}
 						key={el.answerText}
 					>
 						{el.answerText}
