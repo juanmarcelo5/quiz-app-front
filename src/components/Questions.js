@@ -58,7 +58,7 @@ export const Questions = ({ questions = [] }) => {
 		<div className='col-lg-4 col-md-12'></div>
 
 		<div className='col-lg-4 col-md-12'>
-			<h3>Preguntas sobre la biblia</h3>
+			<h3> Preguntas sobre la biblia</h3>
 			<h5>{questions[currentQuestion].title}</h5>
 			{questions[currentQuestion].answer.map((el) => {
 				return (
