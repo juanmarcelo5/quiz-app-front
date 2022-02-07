@@ -26,7 +26,7 @@ export const Questions = ({ questions = [] }) => {
 				})
 			})
 
-		window.location.href ='https://juanmarcelo5.github.io/quiz-app-front/'
+		window.location.reload(false)
 	}, [isFinished])
 
 	const getAnswer = (answer, e) => {
