@@ -25,10 +25,8 @@ export const Questions = ({ questions = [] }) => {
 					error: null,
 				})
 			})
-		setTimeout(()=>{
-			window.location.replace('/quiz-app-front')
-		
-		},200)	
+
+		window.location.replace('/quiz-app-front')
 	}, [isFinished])
 
 	const getAnswer = (answer, e) => {
@@ -56,24 +54,24 @@ export const Questions = ({ questions = [] }) => {
 
 	return (
 		<div className='row'>
-		<div className='col-lg-4 col-md-12'></div>
+			<div className='col-lg-4 col-md-12'></div>
 
-		<div className='col-lg-4 col-md-12'>
-			<h3> Preguntas sobre la biblia</h3>
-			<h5>{questions[currentQuestion].title}</h5>
-			{questions[currentQuestion].answer.map((el) => {
-				return (
-					<button
-						className='btn btn-primary mt-2 w-100'
-						onClick={(e) => getAnswer(el.isCorrect, e)}
-						key={el.answerText}
-					>
-						{el.answerText}
-					</button>
-				)
-			})}
-		</div>
-		<div className='col-lg-4 col-md-12'></div>
+			<div className='col-lg-4 col-md-12'>
+				<h3> Preguntas sobre la biblia</h3>
+				<h5>{questions[currentQuestion].title}</h5>
+				{questions[currentQuestion].answer.map((el) => {
+					return (
+						<button
+							className='btn btn-primary mt-2 w-100'
+							onClick={(e) => getAnswer(el.isCorrect, e)}
+							key={el.answerText}
+						>
+							{el.answerText}
+						</button>
+					)
+				})}
+			</div>
+			<div className='col-lg-4 col-md-12'></div>
 		</div>
 	)
 }
