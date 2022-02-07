@@ -26,7 +26,7 @@ export const Questions = ({ questions = [] }) => {
 				})
 			})
 		setTimeout(()=>{
-			window.location.reload()
+			window.location.replace('/quiz-app-front')
 		
 		},200)	
 	}, [isFinished])
