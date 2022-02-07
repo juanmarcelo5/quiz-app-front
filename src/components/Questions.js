@@ -26,7 +26,7 @@ export const Questions = ({ questions = [] }) => {
 				})
 			})
 
-		window.location.reload(false)
+			window.location.href = window.location.href
 	}, [isFinished])
 
 	const getAnswer = (answer, e) => {
