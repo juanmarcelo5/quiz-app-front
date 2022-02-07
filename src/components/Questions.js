@@ -26,7 +26,8 @@ export const Questions = ({ questions = [] }) => {
 				})
 			})
 		setTimeout(()=>{
-			window.location.href='https://juanmarcelo5.github.io/quiz-app-front/'
+			window.location.reload()
+		
 		},200)	
 	}, [isFinished])
 
