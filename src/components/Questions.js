@@ -76,7 +76,7 @@ export const Questions = ({ questions = [] }) => {
 				</div>
 
 			):(
-				<div>
+				<div className='border border-primary'>
 					<h3>Haz finalizado</h3>
 					<h4>Obtuviste un puntaje de {score}/{questions.length *5}</h4>
 					<a href='https://juanmarcelo5.github.io/quiz-app-front/' className='btn btn-primary'>Ver tu posicion en la lista de jugadores</a>
