@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../context/DataContext'
-import { Quiz } from './Quiz'
+import { ItemQuestions } from './ItemQuestions'
+import { ShowScore } from './ShowScore'
 const URL = 'https://quiz-appmb.herokuapp.com/api/auth'
 
 export const Questions = ({ questions = [] }) => {
@@ -13,11 +14,12 @@ export const Questions = ({ questions = [] }) => {
 		if (!isFinished) {
 			return
 		}
-		fetch(URL, {
+		const options = {
 			method: 'PUT',
 			headers: { 'content-type': 'application/json' },
 			body: JSON.stringify(data),
-		})
+		}
+		fetch(URL, options)
 			.then((res) => res.json())
 			.then((data) => {
 				setData({
@@ -29,7 +31,7 @@ export const Questions = ({ questions = [] }) => {
 	}, [isFinished])
 
 	const getAnswer = (answer, e) => {
-		//verificamos primero la rapuesta y cambiamos los colores
+		//verificamos primero la respuesta y cambiamos los colores
 		if (answer) {
 			setScore(() => (score += 5))
 			e.target.classList = 'btn btn-success mt-2 w-100'
@@ -50,38 +52,31 @@ export const Questions = ({ questions = [] }) => {
 			setIsFinished(true)
 		}
 	}
-
 	return (
 		<>
-			{ !isFinished ?(
+			{!isFinished ? (
 				<div className='row'>
-					<div className='col-lg-4 col-md-12'></div>
-
-					<div className='col-lg-4 col-md-12'>
-						<h3> Preguntas sobre la biblia</h3>
+					<div className='col-lg-4 col-md-12 col-sm-12'></div>
+					<div className='col-lg-4 col-md-12 col-sm-0'>
+						<h5>
+							#Pregunta {currentQuestion + 1}/{questions.length}
+						</h5>
 						<h5>{questions[currentQuestion].title}</h5>
 						{questions[currentQuestion].answer.map((el) => {
 							return (
-								<button
-									className='btn btn-primary mt-2 w-100'
-									onClick={(e) => getAnswer(el.isCorrect, e)}
+								<ItemQuestions
 									key={el.answerText}
-								>
-									{el.answerText}
-								</button>
+									el={el}
+									getAnswer={getAnswer}
+								/>
 							)
 						})}
 					</div>
-					<div className='col-lg-4 col-md-12'></div>
+					<div className='col-lg-4 col-md-12 col-sm-0'></div>
 				</div>
-
-			):(
-				<div className='border border-primary text-center p-2' >
-					<h3>Haz finalizado</h3>
-					<h4>Obtuviste un puntaje de {score}/{questions.length *5}</h4>
-					<a href='https://juanmarcelo5.github.io/quiz-app-front/' className='btn mt-2 p-2 btn-primary'>Ver tu posicion en la lista de jugadores</a>
-				</div>
-			) }
+			) : (
+				<ShowScore score={score} totalScore={questions.length * 5} />
+			)}
 		</>
 	)
 }

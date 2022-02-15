@@ -6,7 +6,7 @@ export const ShowAvatar = () => {
 	const { data: avatars, loading, error} = useAjax(URL)
 	return (
 		<div className='col-lg-6 col-md-12  d-felx '>
-			{loading ? 'Cargando...' : <CrudTable data={avatars.data} />}
+			{loading ? <h5 className='title mt-3'>Cargando... por favor espere!</h5>: <CrudTable data={avatars.data} />}
 		</div>
 	)
 }
