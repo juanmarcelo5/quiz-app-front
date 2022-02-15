@@ -7,9 +7,11 @@ export const ShowQuestion = () => {
 	const { data: question, loading } = useAjax(url)
 
 	return (
-		<div className='row'>
+		<div className='container'>
 			{loading ? (
-				'Cargando preguntas...'
+				<h5 className='text-center text-title - mt-3 '>
+					Cargando preguntas... por favor espere!
+				</h5>
 			) : (
 				<Questions questions={question.data} />
 			)}

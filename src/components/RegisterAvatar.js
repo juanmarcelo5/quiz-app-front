@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { DataContext } from '../context/DataContext'
-
 const url = 'https://quiz-appmb.herokuapp.com/api/auth'
 
 export const RegisterAvatar = ({ isAuth }) => {
@@ -9,7 +8,7 @@ export const RegisterAvatar = ({ isAuth }) => {
 
 	const addAvatar = async () => {
 		if (avatar.length === 0) {
-			alert('El avatar no puede estar vacio!!')
+			return alert('El avatar no puede estar vacio!!')
 		}
 
 		const dataPost = {
@@ -31,17 +30,19 @@ export const RegisterAvatar = ({ isAuth }) => {
 			updateData(dataPost)
 			isAuth(true)
 		} catch (error) {
-			console.log(error)
 			return alert(error)
 		}
 	}
 
 	return (
-		<div className='col-lg-6 col-md-12  text-center'>
+		<div className='col-lg-6 col-md-12 col-sm-12  text-center'>
 			<h3 className='text-center'> Registrate y juega! </h3>
 			<input
 				className='form-control'
 				type='text'
+				placeholder='Ingrese un nombre cualquiera '
+				autoFocus
+				onKeyPress={(e) => e.key === 'Enter' && addAvatar()}
 				onChange={(e) => setData(e.target.value)}
 			/>
 			<button className='btn btn-primary text-center mt-3' onClick={addAvatar}>
