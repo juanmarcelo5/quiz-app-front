@@ -5,7 +5,7 @@ const CrudTable = ({ data }) => {
 	return (
 		<div className=' container text-center'>
 			<h3>Puntajes obtenidos</h3>
-			<table className='w-100'>
+			<table className='w-100 animate__animated animate__fadeIn'>
 				<thead>
 					<tr>
 						<th> Posicion </th>

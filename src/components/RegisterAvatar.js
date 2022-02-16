@@ -10,9 +10,8 @@ export const RegisterAvatar = ({ isAuth }) => {
 		if (avatar.length === 0) {
 			return alert('El avatar no puede estar vacio!!')
 		}
-
 		const dataPost = {
-			avatar,
+			avatar: avatar.trim(),
 		}
 
 		let options = {
@@ -35,7 +34,7 @@ export const RegisterAvatar = ({ isAuth }) => {
 	}
 
 	return (
-		<div className='col-lg-6 col-md-12 col-sm-12  text-center'>
+		<div className='col-lg-6 col-md-12 col-sm-12  text-center animate__animated animate__fadeIn'>
 			<h3 className='text-center'> Registrate y juega! </h3>
 			<input
 				className='form-control'
